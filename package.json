@@ -1,0 +1,26 @@
+{
+  "name": "Humongous",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoldenPaladin/Humongous.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoldenPaladin/Humongous/issues"
+  },
+  "homepage": "https://github.com/GoldenPaladin/Humongous#readme",
+  "dependencies": {
+    "mongoose": "^6.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
