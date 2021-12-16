@@ -11,7 +11,9 @@ mongoose.connect(
 
 async function run() {
   try {
-    const user = await User.find({ name: "Hannibal" });
+    // there is also deleteMany
+    // the console log of user will return this: { deletedCount: 6 }
+    const user = await User.deleteMany({ name: "Hannibal" });
     console.log(user);
   } catch (e) {
     console.log(e.message);
