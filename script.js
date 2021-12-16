@@ -11,15 +11,8 @@ mongoose.connect(
 
 async function run() {
   try {
-    const user = await User.create({
-      name: "Hannibal",
-      age: 18,
-      hobbies: ["Soccer", "Bowling"],
-      address: {
-        street: "26 rue el habib",
-        city: "Ariana",
-      },
-    });
+    const user = await User.findById("61bbb7a6819a4f35e2a59b59");
+    console.log(user);
   } catch (e) {
     console.log(e.message);
   }

@@ -28,6 +28,7 @@ const userSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
+    // immutible makes whatever value in unchangeable.
     immutible: true,
     default: () => Date.now(),
   },
