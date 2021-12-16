@@ -19,6 +19,10 @@ async function run() {
   //const user = await User.create({ name: "Hannibal", age: 18})
   const user = new User({ name: "Toutou", age: 25 });
   await user.save();
+
+  // modify user
+  user.name = "Yassine";
+  user.save();
   console.log(user);
 }
 run();
