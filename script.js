@@ -12,14 +12,13 @@ mongoose.connect(
 
 async function run() {
   try {
-    //use create if DB is empty
     const user = await User.findOne({
       name: "Maradona",
-      age: 98,
       email: "test@test.com",
     });
     console.log(user);
-    console.log(user.namedEmail);
+    await user.save();
+    console.log(user);
   } catch (e) {
     console.log(e.message);
   }

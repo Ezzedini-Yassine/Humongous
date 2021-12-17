@@ -66,4 +66,20 @@ userSchema.virtual("namedEmail").get(function () {
   return `${this.name} <${this.email}>`;
 });
 
+//middleware:
+//pre: before i save my model (save, validate, remove)
+//post: after
+userSchema.pre("save", function (next) {
+  this.updatedAt = Date.now();
+  //to stop the save u can throw an error
+  //throw new Error("Fail save")
+  next();
+});
+
+//doc here is that thing that has been saved
+userSchema.post("save", function (doc, next) {
+  doc.sayHi();
+  next();
+});
+
 module.exports = mongoose.model("User", userSchema);
