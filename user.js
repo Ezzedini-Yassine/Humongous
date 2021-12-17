@@ -50,11 +50,14 @@ userSchema.methods.sayHi = function () {
   console.log(`Hi, My name is ${this.name}`);
 };
 
-//"static method" is a method defined as a member of an object but is accessible directly from an API object's constructor,
-//rather than from an object instance created via the constructor
+//i want this to return only, no chaineable stuff
+userSchema.statics.findByName = function (name) {
+  return this.find({ name: new RegExp(name, "i") });
+};
 
-// userSchema.statics.findByName = function (name) {
-//   return this.where({ name: new RegExp(name, "i") });
-// };
+//this will be chaineable with the query
+userSchema.query.byName = function (name) {
+  return this.where({ name: new RegExp(name, "i") });
+};
 
 module.exports = mongoose.model("User", userSchema);

@@ -11,9 +11,14 @@ mongoose.connect(
 
 async function run() {
   try {
-    const user = await User.findOne({ name: "Diego" });
+    //this works fine, as we said, since it's userSchema.query => chaineable
+    //u can call it when u use .find(), .where()
+    const user = await User.find().byName("diego");
+    //----------------VS-------------------------
+    //this wont work because it's statics, then unchaineable :)
+    //const user = await User.find().findByName("diego");
+
     console.log(user);
-    user.sayHi();
   } catch (e) {
     console.log(e.message);
   }
