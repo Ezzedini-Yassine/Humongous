@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const user = require("./user");
 const User = require("./user");
 
 mongoose.connect(
@@ -11,14 +12,14 @@ mongoose.connect(
 
 async function run() {
   try {
-    //this works fine, as we said, since it's userSchema.query => chaineable
-    //u can call it when u use .find(), .where()
-    const user = await User.find().byName("diego");
-    //----------------VS-------------------------
-    //this wont work because it's statics, then unchaineable :)
-    //const user = await User.find().findByName("diego");
-
+    //use create if DB is empty
+    const user = await User.findOne({
+      name: "Maradona",
+      age: 98,
+      email: "test@test.com",
+    });
     console.log(user);
+    console.log(user.namedEmail);
   } catch (e) {
     console.log(e.message);
   }

@@ -60,4 +60,10 @@ userSchema.query.byName = function (name) {
   return this.where({ name: new RegExp(name, "i") });
 };
 
+//Virtual is a property that is not on the Schema its self
+//but a virtual property that is based on other properties that are already on there :D
+userSchema.virtual("namedEmail").get(function () {
+  return `${this.name} <${this.email}>`;
+});
+
 module.exports = mongoose.model("User", userSchema);
