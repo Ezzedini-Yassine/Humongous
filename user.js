@@ -44,4 +44,17 @@ const userSchema = new mongoose.Schema({
   address: addressSchema,
 });
 
+//we can add methods to each instance of our users
+//must use normal function cause we using this keyword
+userSchema.methods.sayHi = function () {
+  console.log(`Hi, My name is ${this.name}`);
+};
+
+//"static method" is a method defined as a member of an object but is accessible directly from an API object's constructor,
+//rather than from an object instance created via the constructor
+
+// userSchema.statics.findByName = function (name) {
+//   return this.where({ name: new RegExp(name, "i") });
+// };
+
 module.exports = mongoose.model("User", userSchema);
